@@ -1,7 +1,5 @@
 package com.maincoders.cakefactory.service.impl;
 
-import com.maincoders.cakefactory.entity.CatalogEntity;
-import com.maincoders.cakefactory.repo.CatalogRepo;
 import com.maincoders.cakefactory.services.impl.CatalogServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -10,9 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.List;
-
-@ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class CatalogServiceImplTest {
 
@@ -21,7 +16,7 @@ public class CatalogServiceImplTest {
 
 
     @Test
-    public void CatalogServiceImplAutowired() {
+    public void catalogServiceImplAutowired() {
         Assertions.assertNotNull(catalogService);
     }
 }

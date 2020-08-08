@@ -27,7 +27,7 @@ To check all the tables:
 To check the details of a particular table:
 ``\d+ <table_name>``
 
-##Useful Resouces
+## Useful Resouces
 - [Domain Object Persistence](https://dzone.com/articles/domain-object-persistence)
 - [Persistence Model and Domain Model](https://stackoverflow.com/questions/14024912/ddd-persistence-model-and-domain-model)
 - [Access the PostgreSQL command line terminal through Docker](https://github.com/Radu-Raicea/Dockerized-Flask/wiki/%5BDocker%5D-Access-the-PostgreSQL-command-line-terminal-through-Docker)
