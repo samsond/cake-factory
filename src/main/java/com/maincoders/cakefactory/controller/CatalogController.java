@@ -21,6 +21,6 @@ public class CatalogController {
         List<CatalogEntity> pastries = catalogService.getCatalogs();
 
         model.addAttribute("pastries", pastries);
-        return "index";
+        return "catalog";
     }
 }
