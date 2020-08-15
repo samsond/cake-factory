@@ -19,6 +19,8 @@ public class CatalogEntity extends CatalogDomain {
 
     private double price;
 
+
+
     public CatalogEntity() {
     }
 
@@ -26,6 +28,7 @@ public class CatalogEntity extends CatalogDomain {
         this.id = id;
         this.title = title;
         this.price = price;
+
     }
 
     // getters and setters and overriding methods
@@ -44,7 +47,11 @@ public class CatalogEntity extends CatalogDomain {
         this.title = title;
     }
 
-    public String getPrice() {
+    public double getPrice() {
+        return price;
+    }
+
+    public String getFormattedPrice() {
         DecimalFormat d = new DecimalFormat("'£'0.00");
         return d.format(price);
     }
@@ -52,7 +59,5 @@ public class CatalogEntity extends CatalogDomain {
     public void setPrice(double price) {
         this.price = price;
     }
-
-
 
 }

@@ -9,27 +9,47 @@
                 <tr>
                     <th scope="col">Title</th>
                     <th scope="col">Qty</th>
-                    <th scope="col">Total</th>
+                    <th scope="col">Price</th>
+                    <th scope="col"></th>
                     <th class="col-md-1"></th>
                 </tr>
                 </thead>
+                {{#basketItems}}
                 <tbody>
                 <!--  -->
                 <tr>
-                    <td>titleplaceholder</td>
-                    <td class="qty">quanitiyplaceholder</td>
-                    <td>totalplaceholder</td>
+                    <td>{{title}}</td>
+                    <td class="qty" name=qtyNum scope="col">{{qty}}</td>
+                    <td scope="col">{{price}}</td>
+                    <td scope="col"></td>
                     <td class="col-md-1">
                         <form method="post" action="/basket/delete">
                             <input name="sku" value="id" type="hidden"/>
-                            <button class="btn btn-danger btn-sm remove-item" type="submit">Remove</button>
+                            <button class="btn btn-danger btn-sm remove-item float-right" type="submit">Remove</button>
                             <input type="hidden" name="" value=""/>
                         </form>
                     </td>
+
                 </tr>
+
+
+
                 <!-- -->
                 </tbody>
+                {{/basketItems}}
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Subtotal:</td>
+                    <td class="float-right">{{total}}</td>
+                </tr>
+                </tbody>
+
+
             </table>
+
+
         </div>
     </div>
     <!-- /.row -->
@@ -39,15 +59,15 @@
             <form method="post" action="/order">
                 <div class="form-group">
                     <label for="addressLine1">Address Line 1</label>
-                    <input required type="text" class="form-control" name="addressLine1" id="addressLine1" placeholder="Address Line 1" value="addressLine1">
+                    <input required type="text" class="form-control" name="addressLine1" id="addressLine1" placeholder="" value="">
                 </div>
                 <div class="form-group">
                     <label for="addressLine2">Address Line 1</label>
-                    <input type="text" class="form-control" name="addressLine2" id="addressLine2" placeholder="Address Line 2" value="addressLine1">
+                    <input type="text" class="form-control" name="addressLine2" id="addressLine2" placeholder="" value="">
                 </div>
                 <div class="form-group">
                     <label for="postcode">Postcode</label>
-                    <input required type="text" class="form-control" name="postcode" id="postcode" placeholder="Postcode" value="postCode">
+                    <input required type="text" class="form-control" name="postcode" id="postcode" placeholder="" value="">
                 </div>
                 <button type="submit" class="btn btn-primary float-right" id="complete-order">Complete order</button>
                 <input type="hidden" name="" value=""/>

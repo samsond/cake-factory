@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CatalogServiceImpl implements CatalogService {
@@ -16,5 +17,13 @@ public class CatalogServiceImpl implements CatalogService {
 
     public List<CatalogEntity> getCatalogs() {
         return catalogRepo.findAll();
+    }
+
+    public Optional<CatalogEntity> getCatalogById(String id) {
+        return catalogRepo.findById(id);
+    }
+
+    public CatalogEntity getCatalogByTitle(String title) {
+        return catalogRepo.findByTitle(title);
     }
 }

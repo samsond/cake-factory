@@ -10,6 +10,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.Optional;
+
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 public class CatalogRepoIntegrationTests {
@@ -28,9 +30,9 @@ public class CatalogRepoIntegrationTests {
         entityManager.flush();
 
         // when
-        CatalogEntity found = catalogRepo.getById(catalog.getId());
+        Optional<CatalogEntity> found = catalogRepo.findById(catalog.getId());
 
         // then
-        Assertions.assertThat(found.getTitle()).isEqualTo(catalog.getTitle());
+        Assertions.assertThat(found.isPresent()).isEqualTo(catalog.getTitle());
     }
 }
