@@ -62,7 +62,11 @@
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
               </div>
               <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                <form action="/basket" method="post" name="addBasketForm">
+
+                    <input type="hidden" name="id" value="{{id}}"/>
+                   <button class="btn btn-primary float-right add-to-basket" type="submit" name="addBasketButton">Add</button>
+                </form>
               </div>
             </div>
           </div>
