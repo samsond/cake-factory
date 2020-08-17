@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class BasketServiceImpl implements BasketService {
@@ -86,6 +84,36 @@ public class BasketServiceImpl implements BasketService {
         }
 
         return getFormattedPrice(total);
+    }
+
+    @Override
+    public void removeBasket(String title) {
+
+        if (!basketList.isEmpty()) {
+            for (BasketDomain basket: basketList) {
+                if (basket.getTitle().equals(title)) {
+                    int quantity = basket.getQty();
+                    if (quantity != 0) {
+                        basket.setQty(quantity - 1);
+                    }
+
+                }
+            }
+
+
+        }
+
+        for (Iterator<BasketDomain> iterator = basketList.iterator(); iterator.hasNext();) {
+            BasketDomain basket = iterator.next();
+            if (basket.getQty() == 0) {
+                iterator.remove();
+            }
+        }
+
+
+
+
+
     }
 
     public static double convertStringToInt(String priceInString) {
