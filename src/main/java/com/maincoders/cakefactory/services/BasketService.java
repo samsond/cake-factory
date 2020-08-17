@@ -12,4 +12,5 @@ public interface BasketService {
     public void addBasket(String id);
     public int getQuantity();
     public String getTotal();
+    public void removeBasket(String id);
 }

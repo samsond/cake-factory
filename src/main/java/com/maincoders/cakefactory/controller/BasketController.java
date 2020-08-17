@@ -35,4 +35,15 @@ public class BasketController {
         model.addAttribute("items", basketService.getQuantity());
         return "redirect:/catalog";
     }
+
+    @PostMapping("/delete")
+    public String removeBasket(Model model, @RequestParam("title") String title) {
+
+        basketService.removeBasket(title);
+        List<BasketDomain> basket = basketService.getBasket();
+        model.addAttribute("items", basketService.getQuantity());
+        model.addAttribute("basketItems", basket);
+
+        return "redirect:/basket";
+    }
 }

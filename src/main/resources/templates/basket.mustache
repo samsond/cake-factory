@@ -14,37 +14,41 @@
                     <th class="col-md-1"></th>
                 </tr>
                 </thead>
-                {{#basketItems}}
-                <tbody>
-                <!--  -->
-                <tr>
-                    <td>{{title}}</td>
-                    <td class="qty" name=qtyNum scope="col">{{qty}}</td>
-                    <td scope="col">{{price}}</td>
-                    <td scope="col"></td>
-                    <td class="col-md-1">
-                        <form method="post" action="/basket/delete">
-                            <input name="sku" value="id" type="hidden"/>
-                            <button class="btn btn-danger btn-sm remove-item float-right" type="submit">Remove</button>
-                            <input type="hidden" name="" value=""/>
-                        </form>
-                    </td>
+                <form action="/basket/delete" method="post">
+                    {{#basketItems}}
+                        <tbody>
+                        <!--  -->
+                        <tr>
+                            <td>{{title}}</td>
+                            <td class="qty" name=qtyNum scope="col">{{qty}}</td>
+                            <td scope="col">{{price}}</td>
+                            <td scope="col"></td>
+                            <td class="col-md-1">
+                                <form method="post" action="/basket/delete">
+                                    <input name="sku" value="id" type="hidden"/>
+                                    <input type="hidden" name="title" value="{{title}}"/>
+                                    <button class="btn btn-danger btn-sm remove-item float-right" type="submit">Remove</button>
+                                    <input type="hidden" name="" value=""/>
+                                </form>
+                            </td>
 
-                </tr>
+                        </tr>
 
 
 
-                <!-- -->
-                </tbody>
-                {{/basketItems}}
-                <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>Subtotal:</td>
-                    <td class="float-right">{{total}}</td>
-                </tr>
-                </tbody>
+                        <!-- -->
+                        </tbody>
+                    {{/basketItems}}
+                    <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Subtotal:</td>
+                        <td class="float-right">{{total}}</td>
+                    </tr>
+                    </tbody>
+                </form>
+
 
 
             </table>
