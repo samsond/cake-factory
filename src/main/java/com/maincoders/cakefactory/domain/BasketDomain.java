@@ -5,9 +5,12 @@ import java.text.DecimalFormat;
 public class BasketDomain {
     private String title;
     private int qty;
-    private String price;
+    private double price;
 
-    public BasketDomain(String title, int qty, String price) {
+    public BasketDomain() {
+    }
+
+    public BasketDomain(String title, int qty, double price) {
         this.title = title;
         this.qty = qty;
         this.price = price;
@@ -29,13 +32,20 @@ public class BasketDomain {
         this.qty = qty;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-
+    @Override
+    public String toString() {
+        return "BasketDomain{" +
+                "title='" + title + '\'' +
+                ", qty=" + qty +
+                ", price=" + price +
+                '}';
+    }
 }

@@ -34,3 +34,6 @@ out/
 .vscode/
 
 bin/
+
+### MAC OS FILES ###
+.DS_Store

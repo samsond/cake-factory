@@ -1,6 +1,7 @@
 package com.maincoders.cakefactory.services.impl;
 
 import com.maincoders.cakefactory.domain.BasketDomain;
+import com.maincoders.cakefactory.dto.BasketDTO;
 import com.maincoders.cakefactory.entity.CatalogEntity;
 import com.maincoders.cakefactory.services.BasketService;
 import com.maincoders.cakefactory.services.CatalogService;
@@ -26,25 +27,54 @@ public class BasketServiceImpl implements BasketService {
         return basketList;
     }
 
+//    @Override
+//    public void addBasket(String id) {
+//
+//        Optional<CatalogEntity> catalogEntity = catalogService.getCatalogById(id);
+//
+//        if (catalogEntity.isPresent() && basketList.isEmpty()) {
+//            basketDomain = new BasketDomain(
+//                    catalogEntity.get().getTitle(),
+//                    1,
+//                    catalogEntity.get().getFormattedPrice());
+//                    basketList.add(basketDomain);
+//
+//
+//
+//        } else if (catalogEntity.isPresent() && !basketList.isEmpty()) {
+//            boolean isItemNew = true;
+//
+//            for (BasketDomain basket: basketList) {
+//                if (basket.getTitle().equals(catalogEntity.get().getTitle())) {
+//                    basket.setQty(basket.getQty() + 1);
+//                    isItemNew = false;
+//                    break;
+//                }
+//            }
+//
+//            if (isItemNew) {
+//                basketDomain = new BasketDomain(
+//                        catalogEntity.get().getTitle(),
+//                        1,
+//                        catalogEntity.get().getFormattedPrice());
+//                basketList.add(basketDomain);
+//            }
+//        }
+//
+//
+//    }
+
     @Override
-    public void addBasket(String id) {
+    public void addBasket(BasketDomain basketDomain) {
 
-        Optional<CatalogEntity> catalogEntity = catalogService.getCatalogById(id);
-
-        if (catalogEntity.isPresent() && basketList.isEmpty()) {
-            basketDomain = new BasketDomain(
-                    catalogEntity.get().getTitle(),
-                    1,
-                    catalogEntity.get().getFormattedPrice());
-                    basketList.add(basketDomain);
-
-
-
-        } else if (catalogEntity.isPresent() && !basketList.isEmpty()) {
+        if (basketDomain.getQty() == 0 && basketList.isEmpty()) {
+            basketDomain.setQty(basketDomain.getQty() + 1);
+            basketList.add(basketDomain);
+        } else if (!basketList.isEmpty()) {
             boolean isItemNew = true;
 
             for (BasketDomain basket: basketList) {
-                if (basket.getTitle().equals(catalogEntity.get().getTitle())) {
+                if (basket.getTitle().equals(basketDomain.getTitle())) {
                     basket.setQty(basket.getQty() + 1);
                     isItemNew = false;
                     break;
@@ -52,14 +82,10 @@ public class BasketServiceImpl implements BasketService {
             }
 
             if (isItemNew) {
-                basketDomain = new BasketDomain(
-                        catalogEntity.get().getTitle(),
-                        1,
-                        catalogEntity.get().getFormattedPrice());
+                basketDomain.setQty(basketDomain.getQty() + 1);
                 basketList.add(basketDomain);
             }
         }
-
 
     }
 
@@ -79,7 +105,11 @@ public class BasketServiceImpl implements BasketService {
         for (BasketDomain basket: basketList) {
             qty = basket.getQty();
 
-            total += qty * convertStringToInt(basket.getPrice());
+//            total += qty * convertStringToInt(basket.getPrice());
+
+//            System.out.println("################################## " + basket);
+
+            total += (double) qty * basket.getPrice();
 
         }
 
